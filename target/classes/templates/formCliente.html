@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/layout.css}"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form Cliente</title>
+</head>
+<body>
+	<h1>Inserisci i dati del cliente</h1>
+	<form action="#" th:action="@{/clienti/addCliente}" th:object="${cliente}" 
+	method="post">
+	<p>
+		Ragione Sociale: <input type="text" th:field="*{ragioneSociale}" />
+	</p>
+	
+	<p>
+		Tipo cliente: <select type="text" th:field="*{tipoCliente}" >
+			<option
+			th:each="tipo : ${T(it.epicode.be.energy.model.TipoCliente).values()}"
+			th:value="${tipo}" th:text="${tipo}"></option>
+		</select>
+		<div>
+	</p>
+	
+	<p>
+		Partita iva: <input type="text" th:field="*{partitaIva}" />
+	</p>
+	<p>
+		Email: <input type="text" th:field="*{email}" />
+	</p>
+	
+	<p>
+		Data inserimento: <input type="date" pattern="yyyy-MM-dd" th:field="*{dataInserimento}" />
+	</p>
+	<p>
+		Data ultimo Contatto: <input type="date" pattern="yyyy-MM-dd" th:field="*{dataUltimoContatto}" />
+	</p>
+	
+	<p>
+		Fatturato Annuale: <input type="text" th:field="*{fatturatoAnnuale}" />
+	</p>
+	
+	<p>
+		Pec: <input type="text" th:field="*{pec}" />
+	</p>
+	
+	<p>
+		Telefono: <input type="text" th:field="*{telefono}" />
+	</p>
+	<p>
+		Email Contatto: <input type="text" th:field="*{emailContatto}" />
+	</p>
+	<p>
+		Nome Contatto: <input type="text" th:field="*{nomeContatto}" />
+	</p>
+	<p>
+		Cognome Contatto: <input type="text" th:field="*{cognomeContatto}" />
+	</p>
+	<p>
+		Telefono Contatto: <input type="text" th:field="*{TelefonoContatto}" />
+	</p><br>
+	
+	
+	
+   
+  Indirizzo Sede Legale: <select th:field="*{indirizzoSedeLegale}" name="indirizzo">
+	<option th:each="i : ${listaIndirizzi}"
+    th:value="${i.id}"
+    th:text="${i.id}" />
+    </select><br>
+    
+    Indirizzo Sede Operativa: <select th:field="*{indirizzoSedeOperativa}" name="indirizzo">
+	<option th:each="i : ${listaIndirizzi}"
+    th:value="${i.id}"
+    th:text="${i.id}" />
+    </select><br>
+    
+     
+
+	
+	<p>
+		<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</p>
+	
+	
+</form>
+	<a href="/clienti/mostraelenco">Lista Clienti</a>
+	
+		<div class="footer" style="background-color: red">Powered by Epicode School</div>
+	
+</body>
+</html>

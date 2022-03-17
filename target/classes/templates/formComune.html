@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/layout.css}"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form Studente</title>
+</head>
+<body>
+	<h1>Inserisci i dati del comune</h1>
+	<form action="#" th:action="@{/comuni/addComune}" th:object="${comune}" 
+	method="post">
+	<p>
+		Nome: <input type="text" th:field="*{nome}" />
+	</p><br>
+	
+	
+	
+	
+	
+	<!--  <label >Corso:</label>
+	<select th:field="*{corso}">
+  <option  th:value="fisica" th:text="fisica">Fisica</option>
+  <option  th:value="lettere" th:text="lettere">Lettere</option>
+  <option  th:value="chimica" th:text="chimica">Chimica</option>
+   </select>-->
+   
+  Provincia: <select th:field="*{provincia}" name="provincia">
+	<option th:each="p : ${listaProvince}"
+    th:value="${p.id}"
+    th:text="${p.nome}" />
+    </select><br>
+    
+ 
+    
+     
+  
+ <!-- <select name="corso" id="corso" required>
+  <option  value="fisica">Fisica</option>
+  <option  value="lettere">Lettere</option>
+  <option  value="chimica">Chimica</option>
+   </select> -->
+	
+	<p>
+		<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</p>
+	
+	
+</form>
+	<a href="/comuni/mostraelenco">Lista Comuni</a>
+	
+		<div class="footer" style="background-color: red">Powered by Epicode School</div>
+	
+</body>
+</html>

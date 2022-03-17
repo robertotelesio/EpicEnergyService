@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Epic Energy Services - Lista comuni</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/css/layout.css}"/>
+</head>
+<body>
+<div class="header-menu">Epic Energy Services</div>
+<div class="header-section">Elenco comuni</div>
+ <div th:switch="${listaIndirizzi.size()}">
+ 
+   <div th:case="*">
+   <table width="100%">
+     <thead>
+        <tr>
+          <th class="header">Nome</th>
+            <th class="header">Provincia</th>
+             <th class="header"></th>
+            <th class="header"></th>
+            
+        </tr>
+      </thead>
+      <tbody>
+            <tr th:each="comune : ${listaComuni}">
+               <td th:text="${comune.nome}"></td>
+                 <td th:text="${comune.provincia.nome}"></td>
+               <td><a th:href="@{/comuni/mostraformaggiorna/{id}(id=${comune.id})}">Aggiorna</i></a></td>
+               <td><a th:href="@{/comuni/eliminacomune/{id}(id=${comune.id})}">Elimina</i></a></td>
+            </tr>
+       </tbody>
+        
+   </table>
+     <nav aria-label="listaComuni">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="comuni/mostraelenco?page=0&size=5">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+  
+   <div class="link-add"><a href="/comuni/mostraformaggiungi">Aggiungi comune</a></div>
+  </div>
+    <div class="link-home"><a href="/">Torna alla Home</a></div>
+	<div class="footer" style="background-color: red">Powered by Epicode School</div>
+   </body>
+</html>

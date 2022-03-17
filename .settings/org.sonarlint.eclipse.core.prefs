@@ -1,0 +1,3 @@
+autoEnabled=true
+eclipse.preferences.version=1
+fileExclusions=FILE\:src/main/java/it/epicode/be/energy/security/config/FormLoginConfigurationAdapter.java\r\nFILE\:src/main/java/it/epicode/be/energy/security/config/JwtSecurityConfig.java

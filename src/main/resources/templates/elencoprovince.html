@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Epic Energy Services - Lista province</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/css/layout.css}"/>
+</head>
+<body>
+<div class="header-menu">Epic Energy Services</div>
+<div class="header-section">Elenco province</div>
+ <div th:switch="${listaProvince.size()}">
+ 
+   <div th:case="*">
+   <table width="100%">
+     <thead>
+        <tr>
+          <th class="header">Nome</th>
+            <th class="header">Regione</th>
+            <th class="header">Sigla</th>
+             <th class="header"></th>
+            <th class="header"></th>
+            
+        </tr>
+      </thead>
+      <tbody>
+            <tr th:each="provincia : ${listaProvince}">
+               <td th:text="${provincia.nome}"></td>
+               <td th:text="${provincia.regione}"></td>
+                 <td th:text="${provincia.sigla}"></td>
+               <td><a th:href="@{/province/mostraformaggiorna/{id}(id=${provincia.id})}">Aggiorna</i></a></td>
+               <td><a th:href="@{/province/eliminaprovincia/{id}(id=${provincia.id})}">Elimina</i></a></td>
+            </tr>
+       </tbody>
+   </table>
+   <div class="link-add"><a href="/province/mostraformaggiungi">Aggiungi provincia</a></div>
+  </div>
+    <div class="link-home"><a href="/">Torna alla Home</a></div>
+	<div class="footer" style="background-color: red">Powered by Epicode School</div>
+
+   </body>
+</html>

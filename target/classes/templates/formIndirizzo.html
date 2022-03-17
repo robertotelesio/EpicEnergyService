@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/layout.css}"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>form Indirizzo</title>
+</head>
+<body>
+	<h1>Inserisci i dati dell' indirizzo</h1>
+	<form action="#" th:action="@{/indirizzi/addIndirizzo}" th:object="${indirizzo}" 
+	method="post">
+	<p>
+		Via: <input type="text" th:field="*{via}" />
+	</p>
+	
+	<p>
+		Civico: <input type="text" th:field="*{civico}" />
+	</p>
+	<p>
+		Località: <input type="text" th:field="*{localita}" />
+	</p>
+	
+	<p>
+		Cap: <input type="text" th:field="*{cap}" />
+	</p><br>
+	
+	
+	
+   
+  Comune: <select th:field="*{comune}" name="comune">
+	<option th:each="c : ${listaComuni}"
+    th:value="${c.id}"
+    th:text="${c.nome}" />
+    </select><br>
+    
+ 
+    
+     
+	
+	<p>
+		<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</p>
+	
+	
+</form>
+	<a href="/indirizzi/mostraelenco">Lista Indirizzi</a>
+	
+		<div class="footer" style="background-color: red">Powered by Epicode School</div>
+	
+</body>
+</html>

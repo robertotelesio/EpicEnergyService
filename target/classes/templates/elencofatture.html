@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Epic Energy Services - Lista fatture</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/css/layout.css}"/>
+</head>
+<body>
+<div class="header-menu">Epic Energy Services</div>
+<div class="header-section">Elenco fatture</div>
+ <div th:switch="${listaFatture.size()}">
+   <div th:case="*">
+   <table width="100%">
+     <thead>
+        <tr>
+          <th class="header">Anno</th>
+            <th class="header">Data</th>
+            <th class="header">Importo</th>
+            <th class="header">Numero</th>
+            <th class="header">Stato</th>
+            <th class="header">Cliente</th>
+            
+       </tr>
+      </thead>
+      <tbody>
+            <tr th:each="fattura : ${listaFatture}">
+               <td th:text="${fattura.anno}"></td>
+               <td th:text="${fattura.data}"></td>
+               <td th:text="${fattura.importo}"></td>
+               <td th:text="${fattura.numero}"></td>
+                 <td th:text="${fattura.statoFattura}"></td>
+                 <td th:text="${fattura.cliente.ragioneSociale}"></td>
+               
+               <td><a th:href="@{/fatture/mostraformaggiorna/{id}(id=${fattura.id})}">Aggiorna</i></a></td>
+               <td><a th:href="@{/fatture/eliminafattura/{id}(id=${fattura.id})}">Elimina</i></a></td>
+            </tr>
+       </tbody>
+   </table>
+   <div class="link-add"><a href="/fatture/mostraformaggiungi">Aggiungi fattura</a></div>
+  </div>
+    <div class="link-home"><a href="/">Torna alla Home</a></div>
+	<div class="footer" style="background-color: red">Powered by Epicode School</div>
+   </body>
+</html>

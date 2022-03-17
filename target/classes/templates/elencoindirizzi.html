@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Epic Energy Services - Lista clienti</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/css/layout.css}"/>
+</head>
+<body>
+<div class="header-menu">Epic Energy Services</div>
+<div class="header-section">Elenco indirizzi</div>
+ <div th:switch="${listaIndirizzi.size()}">
+   <!--  <div class="no-item-found" th:case="0">Nessun indirizzo trovato!</div>-->
+   <!-- * for default case -->
+   <div th:case="*">
+   <table width="100%">
+     <thead>
+        <tr>
+          <th class="header">Via</th>
+            <th class="header">Civico</th>
+            <th class="header">Località</th>
+            <th class="header">Cap</th>
+            <th class="header">Comune</th>
+             <th class="header"></th>
+            <th class="header"></th>
+            
+        </tr>
+      </thead>
+      <tbody>
+            <tr th:each="indirizzo : ${listaIndirizzi}">
+               <td th:text="${indirizzo.via}"></td>
+               <td th:text="${indirizzo.civico}"></td>
+               <td th:text="${indirizzo.localita}"></td>
+               <td th:text="${indirizzo.cap}"></td>
+                 <td th:text="${indirizzo.comune.nome}"></td>
+               <td><a th:href="@{/indirizzi/mostraformaggiorna/{id}(id=${indirizzo.id})}">Aggiorna</i></a></td>
+               <td><a th:href="@{/indirizzi/eliminaindirizzo/{id}(id=${indirizzo.id})}">Elimina</i></a></td>
+            </tr>
+       </tbody>
+   </table>
+   <div class="link-add"><a href="/indirizzi/mostraformaggiungi">Aggiungi indirizzo</a></div>
+  </div>
+    <div class="link-home"><a href="/">Torna alla Home</a></div>
+    	<div class="footer" style="background-color: red">Powered by Epicode School</div>
+
+   </body>
+</html>
