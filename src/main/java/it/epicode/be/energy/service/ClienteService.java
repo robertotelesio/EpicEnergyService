@@ -1,6 +1,5 @@
 package it.epicode.be.energy.service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import it.epicode.be.energy.model.Cliente;
 import it.epicode.be.energy.model.Fattura;
+import it.epicode.be.energy.model.Indirizzo;
 import it.epicode.be.energy.repository.ClienteRepository;
 import it.epicode.be.energy.repository.FatturaRepository;
+import it.epicode.be.energy.repository.IndirizzoRepository;
 import it.epicode.be.energy.security.exceptions.EpicEnergyException;
 
 
@@ -27,6 +28,9 @@ public class ClienteService {
 	@Autowired
 	private FatturaRepository fatturaRepo; 
 	
+	@Autowired
+	private IndirizzoRepository indirizzoRepo;
+	
 	
 
 	public Cliente save(Cliente cliente) {
@@ -35,6 +39,14 @@ public class ClienteService {
 	}	
 	
 	public void delete(Long id) {
+		
+		Cliente delete = clienteRepo.findById(id).get();
+	Indirizzo sedeLeg = indirizzoRepo.findById(delete.getIndirizzoSedeLegale().getId()).get();
+	Indirizzo sedeOpe = indirizzoRepo.findById(delete.getIndirizzoSedeOperativa().getId()).get();
+	sedeLeg.setComune(null);
+	sedeOpe.setComune(null);
+	indirizzoRepo.delete(sedeLeg);
+	indirizzoRepo.delete(sedeOpe);
 		List<Fattura> fatture = fatturaRepo.findByClienteId(id);
 		for(Fattura f : fatture) {
 			fatturaRepo.delete(f);

@@ -30,7 +30,6 @@
                <td th:text="${fattura.numero}"></td>
                  <td th:text="${fattura.statoFattura}"></td>
                  <td th:text="${fattura.cliente.ragioneSociale}"></td>
-               
                <td><a th:href="@{/fatture/mostraformaggiorna/{id}(id=${fattura.id})}">Aggiorna</i></a></td>
                <td><a th:href="@{/fatture/eliminafattura/{id}(id=${fattura.id})}">Elimina</i></a></td>
             </tr>

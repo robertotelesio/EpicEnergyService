@@ -31,8 +31,7 @@ public class ProvinciaControllerWeb {
 		log.info("Test elenco province su pagina Thymeleaf");
 		ModelAndView view = new ModelAndView("elencoprovince");
 		view.addObject("listaProvince", provinciaService.findAll());
-		//model.addAttribute("listaStudenti", studenteService.findAll());
-		return view;
+			return view;
 	}
 	
 	@GetMapping("/mostraformaggiungi")
