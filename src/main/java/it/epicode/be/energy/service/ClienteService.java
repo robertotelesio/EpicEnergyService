@@ -32,6 +32,8 @@ public class ClienteService {
 	private IndirizzoRepository indirizzoRepo;
 	
 	
+	
+	
 
 	public Cliente save(Cliente cliente) {
 		clienteRepo.save(cliente);
@@ -45,6 +47,9 @@ public class ClienteService {
 	Indirizzo sedeOpe = indirizzoRepo.findById(delete.getIndirizzoSedeOperativa().getId()).get();
 	sedeLeg.setComune(null);
 	sedeOpe.setComune(null);
+	delete.setIndirizzoSedeLegale(null);
+	delete.setIndirizzoSedeOperativa(null);
+	delete.setFatture(null);
 	indirizzoRepo.delete(sedeLeg);
 	indirizzoRepo.delete(sedeOpe);
 		List<Fattura> fatture = fatturaRepo.findByClienteId(id);
